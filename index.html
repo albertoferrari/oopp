@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Object Oriented Puzzle Programming">
+	<meta name="keywords" content="Educational Environment,Block Programming,Object Oriented Design,Object Oriented Programming,Blockly,Java">
+	<meta name="author" content="SoWIDE - Department of Engineering and Architecture - University of Parma">
+	<title>Object Oriented Puzzle Programming</title>
+
+	<link rel="stylesheet" type="text/css" href="styles/oopp.css">
+  <link rel="stylesheet" href="lib/highlight/styles/default.css">
+
+  <script src="blockly.js"></script>
+
+  <script src="generators/java.js"></script>
+  <script src="generators/java/classes.js"></script>
+  <script src="generators/java/interfaces.js"></script>
+
+  <script src="blocks/classes.js"></script>
+  <script src="blocks/interfaces.js"></script>
+
+  <script src="values/colors.js"></script>
+  <script src="values/messages.js"></script>
+  <script src="values/globals.js"></script>
+  <script src="lib/highlight/highlight.pack.js"></script>
+  <script src="lib/FileSaver.min.js"></script>
+  <script src="ide.js"></script>
+
+  <xml id="toolbox" style="display: none">
+    <category name="Classes" custom="CLASS"></category>
+    <category name="Interfaces" custom="INTERFACE"></category>
+    <sep></sep>
+    <category name="Methods">
+      <block type="classes_constructor"></block>
+      <block type="object_method"></block>
+      <block type="object_method_return"></block>
+      <block type="classes_parameter"></block>
+      <block type="object_type"></block>
+      <block type="object_string"></block>
+    </category>
+    <category name="Fields">
+      <block type="classes_field"></block>
+      <block type="object_type"></block>
+      <block type="object_string"></block>
+    </category>
+    <category name="Values">
+      <block type="object_constant"></block>
+      <block type="object_type"></block>
+      <block type="object_string"></block>
+    </category>
+  </xml>
+
+</head>
+<body onload="start()">
+
+	<!-- SIDENAV -->
+	<div id="menuDrawer" class="drawer flex-vertical">
+		<div id="drawerHeader">
+			Menu
+			<!-- <div class="squareButton" id="closeButton" onclick="closeNav()">&times;</div> -->
+			<div id="closeButton" onclick="closeNav()"><img src="media/r_arrow.png"></div>
+		</div>
+
+		<div>
+			<h1>Project</h1>
+      <input type="file" accept=".xml" id="inputProjectXML" hidden>
+      <div class="flex-horizontal">
+        <div class="actionButton" id="loadProject" onclick="insertBlocksFromXML()">Load Blocks</div>
+        <div class="actionButton" id="saveProject" onclick="saveProjectAsXML()">Save Project</div>
+      </div>
+      <div class="flex-horizontal">
+        <div class="actionButton" id="loadProject" onclick="clearProject()">Clear Project</div>
+      </div>
+		</div>
+
+		<div style="height: 70%;">
+			<h1>Code Generator</h1>
+			<div class="flex-horizontal">
+				<div class="actionButton" id="saveCode" onclick="saveCodeAsFile()">Save Java Code</div>
+			</div>
+      <code id="generatedCodeArea" class="java" style=></code>
+      <div class="flex-horizontal">
+        <div class="actionButton" id="autoGen" onclick="toggleAutomaticGeneration()">Enable Automatic Code Generation</div>
+      </div>
+    </div>
+
+    <div class="flex-spacer"></div>
+
+		<div>
+      <p style="color: gray; font-size: 10px;">
+  		Version <span id="version"></span>
+      </p>
+		</div>
+	</div>
+
+	<!-- NAVIGATION -->
+	<nav id="topNavigation">
+		<div id="titleDiv">
+			<img src="media/SoWIDE.png" height="70" width="105" alt="Social web, intelligent and distributed systems engineering" align="middle">
+			University of Parma - Object Oriented Puzzle Programming
+		</div>
+		<div class="squareButton" onclick="openNav()">Menu</div>
+		<script>
+			function openNav() {
+				document.querySelector("#menuDrawer").style.right = "0px";
+			}
+
+			function closeNav() {
+				document.querySelector("#menuDrawer").style.right = "-360px";
+			}
+		</script>
+	</nav>
+
+	<!-- BLOCKLY -->
+	<div id="blocklyDiv"></div>
+
+</body>
+</html>
