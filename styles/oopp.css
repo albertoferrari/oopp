@@ -1,0 +1,146 @@
+/**
+ * Global properties
+ */
+html, body {
+  height: 100%;
+}
+body {
+  background-color: #fff;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  margin: 0;
+}
+h1 {
+  font-weight: normal;
+  font-size: 140%;
+}
+button {
+  border-radius: 0px;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+
+}
+.flex-horizontal > div {
+  flex-grow: 1;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.flex-spacer {
+  flex-grow: 3;
+}
+
+/**
+ * Main elements
+ */
+
+/* Top title bar */
+#topNavigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3em;
+  width: inherit;
+  margin: 5px;
+}
+
+/* Container for blockly app */
+#blocklyDiv {
+  height: 100px;
+  width: inherit;
+  margin: 5px;
+  display: flex;
+  flex-grow: 2;
+}
+
+/* Generic square 45px button */
+.squareButton {
+  background-color: #bbb;
+  padding: 4px;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  line-height: 45px;
+  cursor: pointer;
+}
+.squareButton:hover, .actionButton:hover {
+  background-color: #b4b4b4;
+}
+.squareButton:active, .actionButton:active {
+  background-color: #a6a6a6;
+}
+
+.actionButton {
+  background-color: #bbb;
+  padding: 4px;
+  height: 20px;
+  margin-top: 5px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.drawer {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 2;
+    right: -360px;
+    background-color: #ddd;
+    overflow: hidden;
+    transition: 0.3s;
+    padding: 20px;
+}
+.drawer a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #343434;
+    display: block;
+    transition: 0.3s
+}
+.drawer > div {
+  margin-bottom: 30px;
+}
+.drawer > div > * {
+  margin-top: 5px;
+}
+.drawer a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+.drawer #closeButton {
+    position: absolute;
+    padding-top: 0;
+    top: 5px;
+    right: 5px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.drawer #drawerHeader {
+  font-size: 25px;
+  height: 40px;
+}
+.drawer > div > h1 {
+  font-size: 20px;
+  height: 30px;
+  border-bottom: 1px solid black;
+}
+
+#generatedCodeArea {
+  flex-grow: 1;
+  font-size: 8pt;
+  margin-top: 20px;
+  white-space: pre-wrap;
+  overflow: scroll;
+  height: inherit;
+}
